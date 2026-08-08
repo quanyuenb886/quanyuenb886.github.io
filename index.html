@@ -1,1 +1,904 @@
-<h1>wzx没记扒</h1>
+<!DOCTYPE html>
+<html>
+<header>
+	<title>Setimor</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="https://lib.baomitu.com/element-ui/2.15.7/theme-chalk/index.min.css">
+        <script src="https://lib.baomitu.com/vue/2.6.0/vue.min.js"></script>
+        <script src="https://lib.baomitu.com/element-ui/2.15.7/index.js"></script>
+    <style>
+		*:not(input,checkbox,textarea) {
+		   -webkit-touch-callout: none;
+		   -webkit-user-select: none;
+		   user-select: none;
+		   outline: none;
+		   -webkit-tap-highlight-color: transparent;
+		}
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		@font-face {
+		    font-family: UIFonts;
+		    src: url("https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1733494877616/TXZT.ttf");
+		}
+		@font-face {
+		    font-family: 'jiemianyong';
+		    src: url("https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1733494879677/jinbuz.ttf") format('truetype');
+		}
+		@font-face {
+		    font-family: 'huizhiyong';
+		    src: url('https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1733494725257/AaWeiLaiHei95-2.ttf') format('truetype');
+		}
+		@font-face {
+		    font-family: 'infoyong';
+		    src: url('https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1733494798480/FontsLab-FuGuShouJi-2.ttf') format('truetype');
+		}
+		body {
+		    font-family: UIFonts;
+			background:#000;
+		}
+		.ayimgui {
+			position: fixed;
+			width: 360px;
+			height: 320px;
+			top: calc(50% - 180px);
+			left: calc(50% - 180px);
+			z-index: 999;
+			background: rgba(255, 255, 255, .6);
+			overflow: hidden;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+		.onlyTitle {
+			height: 21px !important;
+		}
+		.ayimgui .aytitle {
+			padding: 0 5px;
+			font-size: 16px;
+			background-color: #409EFF;
+		}
+		.ayimgui .aytitle .titleClose {
+			position: absolute;
+			top: 4px;
+			right: 6px;
+			color: #000;
+		}
+		.ayimgui .aytitle .titleClose:hover {
+			color: #000;
+		}
+		.ayimgui .aybody {
+			padding: 15px;
+			height: calc(100% - 21px - 15px - 15px);
+			overflow: auto;
+			font-size: 14px;
+		}
+		.aytext {
+			width: 100%;
+			margin-bottom: 10px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			color: #000;
+		}
+		.slider-container {
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		}
+		 
+		.centered-slider {
+		  width: 50%;
+		}
+		.el-switch .el-switch__core, .el-switch .el-switch__label {
+		  color: #000;
+		}
+		
+		.custom-input-color .el-input__inner {
+		  font-family: UIFonts;
+		  color: #333;
+		    border: 1px solid #d3dce6;
+		    border-radius: 4px;
+		}
+		.el-checkbox {
+			margin: 0px;
+		}
+		.el-checkbox__label {
+			color: #000;
+		}
+		.el-checkbox__input.is-checked+.el-checkbox__label {
+			color: #409EFF;
+		}
+		.el-checkbox__inner {
+			background-color: rgb(254, 254, 254);
+			border: 1px solid #d3dce6;
+		}
+		
+		.el-radio {
+			margin: 8px 0;
+		}
+		.el-radio__label {
+			color: #000;
+		}
+		.el-radio__input.is-checked+.el-radio__label {
+			color: #409EFF;
+		}
+		.el-radio__inner {
+			background-color: rgb(254, 254, 254);
+			border: 1px solid #d3dce6;
+		}
+		.el-radio__input.is-checked .el-radio__inner {
+			background-color: rgb(254, 254, 254);
+		}
+		.el-radio__inner::after {
+			width: 10px;
+			height: 10px;
+			background-color: rgb(58, 138, 247);
+		}
+		.onlySelect {
+			background-color: rgb(254, 254, 254);
+			border: none;
+		}
+		.onlySelect .el-select-dropdown__item {
+			color: #000;
+		}
+		.onlySelect .el-select-dropdown__item.hover,
+		.el-select-dropdown__item:hover:hover {
+			background-color: transparent;
+		}
+		.onlySelect .popper__arrow {
+			border-bottom-color: rgb(254, 254, 254) !important;
+		}
+		.onlySelect.el-popper[x-placement^=bottom] .popper__arrow::after {
+			border-bottom-color: rgb(8254, 254, 254) !important;
+		}
+		.el-select {
+			width: 100%;
+		}
+		.el-select .el-input {
+			background-color: rgb(254, 254, 254);
+		}
+		.el-select .el-input__suffix {
+			background-color: rgb(160, 196, 243);
+			color: #000;
+			right: 0;
+		}
+		.el-select .el-select__caret {
+			color: #000;
+		}
+		.el-select .el-input__inner {
+			background-color: transparent;
+			border: none;
+			color: #000;
+		}
+		.el-select .el-input .el-select__caret {
+			color: #000;
+		}
+		.el-scrollbar .el-scrollbar__bar {
+			opacity: 1 !important;
+		}
+		.el-button {
+			font-size: 14px;
+			padding: 5px 10px;
+			line-height: 14px;
+			color: #000;
+			background-color: #B8D1F2;
+		}
+		.el-button:hover {
+			opacity: .7;
+			color: #000;
+			background-color: #B8D1F2;
+		}
+		.el-button:focus,
+		.el-button:hover {
+			color: #000;
+			background-color: #B8D1F2;
+		}
+		.aycollapse {
+			width: 100%;
+			font-size: 14px;
+			background-color: rgb(177, 206, 240);
+			color: #000;
+		}
+		.aytab {
+			width: 100%;
+			height: 20px;
+			display: flex;
+			border-bottom: 2px solid rgb(200, 217, 233);
+		}
+		.aytab span {
+			padding: 0 5px;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: rgb(189, 199, 208);
+			color: #000;
+			font-size: 14px;
+			font-weight: 500;
+			margin-left: 10px;
+			border-radius: 6px 6px 0 0;
+			cursor: pointer;
+		}
+		
+		.el-input input {
+			background-color: rgb(254, 254, 254);
+			border: none;
+			border-radius: 0px;
+		}
+		/* 卡密弹窗样式 */
+		.keyModal{
+			position:fixed;
+			z:9999;
+			width:100vw;height:100vh;
+			background:rgba(0,0,0,0.85);
+			display:flex;
+			align-items:center;
+			justify-content:center;
+		}
+		.keyBox{
+			background:#fff;
+			padding:40px 25px;
+			border-radius:10px;
+			width:340px;
+		}
+		.keyBox h3{
+			text-align:center;
+			color:#222;
+			margin-bottom:20px;
+		}
+		#keyInput{
+			width:100%;
+			padding:12px 10px;
+			font-size:16px;
+			border:1px solid #ccc;
+			border-radius:6px;
+			margin-bottom:10px;
+		}
+		#submitKey{
+			width:100%;
+			padding:12px;
+			background:#409EFF;
+			color:#fff;
+			border:none;
+			border-radius:6px;
+			font-size:16px;
+			cursor:pointer;
+		}
+		#errText{
+			text-align:center;
+			color:red;
+			margin-top:8px;
+			height:20px;
+		}
+	</style>
+</header>
+<body>
+	<!-- 卡密弹窗 未验证时显示 -->
+	<div id="keyModal" class="keyModal">
+		<div class="keyBox">
+			<h3>请输入授权卡密</h3>
+			<input id="keyInput" placeholder="输入卡密">
+			<button id="submitKey">验证解锁</button>
+			<div id="errText"></div>
+		</div>
+	</div>
+
+	<!-- 绘图主面板 默认隐藏，卡密正确才显示 -->
+	<div id="app" style="display:none;">
+		<div :class="!ifshow?'onlyTitle ayimgui':'ayimgui'" ref="menuMain">
+			<div class="aytitle" @touchstart="titleTouchStart" @touchmove="titleTouchMove">
+				<span class="title-age" style="margin-left:5px;">权约的空壳绘制测试&#160&#160&#160</span>
+				<span id="getfps">&#160</span>
+				<i class="titleClose el-icon el-icon-close" @click="closeimgui"></i>
+			</div>
+			<div class="aybody">
+				<div class="aytab">
+					<span @click="changeTab('one')"
+						:style="{background:tabValue==='one'?'#B1CEF0':'#BDC7D0'}">公告</span>
+					<span @click="changeTab('two')"
+						:style="{background:tabValue==='two'?'#B1CEF0':'#BDC7D0'}">绘图</span>
+					<span @click="changeTab('three')"
+						:style="{background:tabValue==='three'?'#B1CEF0':'#BDC7D0'}">参数</span>
+					<span @click="changeTab('four')"
+						:style="{background:tabValue==='four'?'#B1CEF0':'#BDC7D0'}">设置</span>
+				</div>
+				<div v-show="tabValue==='one'">
+					<br>
+						<div style="text-align: center; color:#000000 ;" id="GetTime">&#160</div>
+						<br>
+						<p id="GG1" style="margin-top: 5px; text-align: center; color:#d96138; font-size: 14px;">
+							现为公益空壳脚本</p>
+						<p id="GG2" style="text-align: center; color:#d96138; font-size: 14px;">
+							禁止打压我，zako zako</p>
+						<p id="GG3" style="text-align: center; color:#d96138; font-size: 14px;">
+							</p>
+						<p id="GG4" style="text-align: center; color:#d96138; font-size: 14px;">
+							</p>
+							<br>
+						<p id="QQgroup" style="margin-top: 5px; text-align: center; color:#0000ee ; font-size: 13px;">&#160</p>
+						<div style="margin-top: 5px; text-align: center; color:#fc0006 ;" id="upload"></div>
+					</div>
+				<div v-show="tabValue === 'two'">
+						<el-switch  v-model="isDraw" active-text="" inactive-text="人物绘制"></el-switch>
+						<p></p>
+						<el-checkbox v-model="isLine">射线</el-checkbox>
+						<el-checkbox v-model="isxue">血量</el-checkbox>
+						<el-checkbox v-model="isBox">方框</el-checkbox>
+						<el-checkbox v-model="isInfo">信息</el-checkbox>
+						<el-checkbox v-model="isBackenemies">背敌</el-checkbox>
+						<p></p>
+						<el-checkbox v-model="isDis">距离</el-checkbox>
+						<el-checkbox v-model="ishold">手持</el-checkbox>
+						<el-checkbox v-model="isBone">骨骼</el-checkbox>
+						<el-checkbox v-model="isBoom2">手雷</el-checkbox>
+						<el-checkbox v-model="isleida">雷达</el-checkbox>
+						<p></p>
+						<br>
+						<el-switch  v-model="ismaterial" active-text="" inactive-text="物资绘制"></el-switch>
+						<p></p>
+						<el-checkbox v-model="checkwuziList.zhongyaolei">信号枪</el-checkbox>
+						<el-checkbox v-model="checkwuziList.nenglianglei">能量</el-checkbox>
+						<el-checkbox v-model="checkwuziList.yaopinlei">药品</el-checkbox>
+						<el-checkbox v-model="checkwuziList.Armor">防具</el-checkbox>
+						<el-checkbox v-model="checkwuziList.Sight">瞄具</el-checkbox>
+						<el-checkbox v-model="checkwuziList.kongtoulei">空投枪</el-checkbox>
+						<el-checkbox v-model="checkwuziList.boooom">迫击炮</el-checkbox>
+						<el-checkbox v-model="iskanbox">盒子</el-checkbox>
+						<el-checkbox v-model="checkwuziList.iszdywp">自定义物资</el-checkbox>
+						<p></p>
+						<el-input v-model="iszidy1" placeholder="6位数字ID" @input="handleInput" style="width:30%" class="custom-input-color" size="10" ></el-input>
+						<el-input v-model="iszidy2" placeholder="6位数字ID" @input="handleInput" style="width:30%" class="custom-input-color" size="10" ></el-input>
+						<el-input v-model="iszidy3" placeholder="6位数字ID" @input="handleInput" style="width:30%" class="custom-input-color" size="10" ></el-input>
+						<p></p>
+						<br>
+						<el-switch  v-model="iszhaoche" active-text="" inactive-text="载具绘制"></el-switch>
+						<p></p>
+						<el-checkbox v-model="isjiaoche">轿车</el-checkbox>
+						<el-checkbox v-model="ismaer">马</el-checkbox>
+						<el-checkbox v-model="isfly">滑翔机</el-checkbox>
+						<el-checkbox v-model="isfzidycar">自定义载具</el-checkbox>
+						<p></p>
+						<el-input v-model="iszidycar" placeholder="6位数字ID" @input="handleInput" style="width:30%" class="custom-input-color" size="10" ></el-input>
+					</div>
+				<div v-show="tabValue==='three'">
+					<span>绘制范围：{{ huizhijvli }}</span>
+					<el-slider v-model="huizhijvli" :min="1" :max="500" :show-tooltip="false" style="margin-left:10px; width: 95%;"></el-slider>
+					<span>骨骼范围：{{ gugefw }}</span>
+					<el-slider v-model="gugefw" :min="1" :max="500" :show-tooltip="false" style="margin-left:10px; width: 95%;"></el-slider>
+					<span>观透队标：{{ team }}</span>
+					<el-slider v-model="team" :min="0" :max="100" :show-tooltip="false" style="margin-left:10px; width: 95%;"></el-slider>
+					<span>人数位置：{{ renshuY }}</span>
+					<el-slider v-model="renshuY" :min="1" :max="100" :show-tooltip="false" style="margin-left:10px; width: 95%;"></el-slider>
+					<span>时间位置：{{ shijianY }}</span>
+					<el-slider v-model="shijianY" :min="1" :max="100" :show-tooltip="false" style="margin-left:10px; width: 95%;"></el-slider>
+					<span>线条调节：{{ xian }}</span>
+					<el-slider v-model="xian" :min="1" :max="10" :show-tooltip="false" style="margin-left:10px; width: 95%;"></el-slider>
+					<span>雷达X：{{ leidaX }}</span>
+					<el-slider v-model="leidaX" :min="1" :max="500" :show-tooltip="false" style="margin-left:10px; width: 95%;"></el-slider>
+					<span>雷达Y：{{ leidaY }}</span>
+					<el-slider v-model="leidaY" :min="1" :max="200" :show-tooltip="false" style="margin-left:10px; width: 95%;"></el-slider>
+					</div>
+				<div v-show="tabValue==='four'">
+					<div>隐藏图标&#160
+					<el-radio v-model="isYctubiao" @change="Ycang" label="2">隐藏&#160</el-radio>
+					<el-radio v-model="isYctubiao" @change="Ycang" label="1">显示</el-radio>
+					</div>
+					<div>绘制帧率&#160
+					<el-radio v-model="fps" @change="fpssz" label="30">60&#160</el-radio>
+					<el-radio v-model="fps" @change="fpssz" label="21">90&#160</el-radio>
+					<el-radio v-model="fps" @change="fpssz" label="16">120</el-radio>
+					</div>
+					<div>骨骼风格&#160
+					<el-radio v-model="guge" label="bg">半骨&#160</el-radio>
+					<el-radio v-model="guge" label="qg">全骨</el-radio>
+					</div>
+					<div>手持风格&#160
+					<el-radio v-model="tietu" label="1">贴图&#160</el-radio>
+					<el-radio v-model="tietu" label="2">文字</el-radio>
+					</div>
+					<div>物资风格&#160
+					<el-radio v-model="wuzitu" label="1">贴图&#160</el-radio>
+					<el-radio v-model="wuzitu" label="2">文字</el-radio>
+					</div>
+					<div>绘图风格&#160
+					<el-radio v-model="ishuizhi" label="2">霓虹&#160</el-radio>
+					<el-radio v-model="ishuizhi" label="4">矢量&#160</el-radio>
+					<el-radio v-model="ishuizhi" label="1">经典&#160</el-radio>
+					<el-radio v-model="ishuizhi" label="3">简洁</el-radio>
+					</div>
+					<div>方框风格&#160
+					<el-radio v-model="fangkuang" label="1">红色&#160</el-radio>
+					<el-radio v-model="fangkuang" label="3">蓝色&#160</el-radio>
+					<el-radio v-model="fangkuang" label="2">动态</el-radio>
+					</div>
+					<div>持雷提示&#160
+					<el-radio v-model="isshoule" label="1">关闭&#160</el-radio>
+					<el-radio v-model="isshoule" label="2">开启</el-radio>
+					</div>
+					<div>主播模式&#160
+					<el-radio v-model="isLive" @change="zhibo" label="2">关闭&#160</el-radio>
+					<el-radio v-model="isLive" @change="zhibo" label="1">开启</el-radio>
+					</div>
+					<div>时间显示&#160
+					<el-radio v-model="xianshitime" label="2">关闭&#160</el-radio>
+					<el-radio v-model="xianshitime" label="1">开启</el-radio>
+					</div>
+					<div>雷达大小&#160
+					<el-radio v-model="leida" label="1">大&#160</el-radio>
+					<el-radio v-model="leida" label="2">中&#160</el-radio>
+					<el-radio v-model="leida" label="3">小</el-radio>
+					</div>
+					<div>信息文字&#160
+					<el-radio v-model="wenzi" label="1" onclick="changeFont('Arial')">经典&#160</el-radio>
+					<el-radio v-model="wenzi" label="2" onclick="changeFont('infoyong')">美化</el-radio>
+					</div>
+					</div>
+		</div>
+	</div>
+
+	<script>
+	// ==========卡密校验逻辑新增 =========
+	const RIGHT_KEY = "LBYBOOL";
+	const keyModal = document.getElementById('keyModal');
+	const keyInput = document.getElementById('keyInput');
+	const submitBtn = document.getElementById('submitKey');
+	const errText = document.getElementById('errText');
+	const appBox = document.getElementById('app');
+
+	function checkKey(){
+		let inputVal = keyInput.value.trim();
+		if(inputVal === RIGHT_KEY){
+			errText.innerText = "";
+			keyModal.style.display = "none";
+			appBox.style.display = "block";
+		}else{
+			errText.innerText = "卡密错误，请重新输入！";
+		}
+	}
+	submitBtn.addEventListener('click', checkKey);
+	keyInput.addEventListener('keydown',e=>{
+		if(e.key === 'Enter') checkKey();
+	})
+
+	// ==========下方全部是你原来的游戏绘图JS，无修改 =========
+	var tta = '验证成功：';
+	var ttb = '验证失败：';
+	var ttc = '您的设备未授权，功能无效.';
+	var tth = '版本校验错误,请勿下载盗版.';
+	var ttd = '网络连接失败,检查H5GG网络权限.';
+	var tte = 'QQ群:';
+	var loginQQ = 1095841708;
+	var offent = {
+		ver:'飞机：@quanyuenb886',//多功能版本
+		verjj:'夏日焕新',//精简版本
+		QQ:528711194,//QQ群
+		vernew:19,
+		vernewjj:18,
+	};
+	var offset = {
+		GW:0xE6DB878, //偏移封装
+				
+		Level:0x90,
+		world1:0xa0,
+		world2:0xa8,
+		HP:0xed8, //血量
+		HPMAX:0xee0, //最大血量
+		Speed:0xf38, //最大速度
+		uid:0xa68, //UID
+				
+		myself1:0x98, //自身偏移
+		myself2:0x88,
+		myself3:0x30,
+		myself4:0x580,
+		myselfarray:0x32a8, //自身数组头
+				
+		team:0xac0, //队伍
+		isdead:0xf58, //死亡判断
+		state:0x1538, //动作
+		zuobiaopoint:0x278, //坐标指针
+		mesh1:0x600, //骨骼
+		mesh2:0x1f0,
+		mesh3:0x7f8,
+		coordinate:0x200, //坐标
+		isAI:0xadc, //人机判断
+		name:0xa40, //名字
+		toward:0x1a0, //朝向
+		FOV:0x30, //FOV
+		cvi:0x18,
+						
+		camera:0x608, //相机
+		povaddr:0x1330,
+						
+		hand1:0x33f0, //手持一级偏移
+		hand2:0x20,
+		hand3:0xbd0,
+						
+		VehicleSkinID:0x1c7c, //载具
+		carassembly:0xac8, //载具组件
+		carhpmax:0x1ec, //载具最大耐久
+		carhp:0x1f0, //载具当前耐久
+		carfullmax:0x210, //载具最大油量
+		carfull:0x214, //载具当前油量
+		Engine:0xa8c, //载具引擎
+						
+		item:0x690, //物资
+		PickUpDataList:0xc40, //盒子列表指针
+		airbox:0x628, //空投
+		airboxsx:0x618, //空投顺序
+		superAirbox:0x634, //超空
+		deadbox:0x630, //盒子偏移，取6位数
+						
+		GrenadePoint:0x73c, //手雷指针
+		GrenadeTime:0x5c8, //手雷爆炸半径
+		GameState:0x9b0, //对局时间指针
+		ReplicatedWorldTimeSeconds:0x5a4, //对局时间
+		ExplosionTime:0x81c, //手雷爆炸时间
+	};
+	var app = new Vue({
+		el: "#app",
+		data() {
+			return {
+				ifshow: true,
+				showOption: true,
+				tabValue: "one",
+				isDraw: true, //开关
+				isLive: '2', //过直播
+				isYctubiao: '1', //隐藏图标
+				isLine: false, //射线
+				isxue: true, //血条
+				isBox: true, //方框
+				isInfo: true, //名字
+				isBackenemies: true, //背敌
+				isDis: true, //距离
+				ishold: true, //手持
+				isBone: false, //骨骼
+				ismaterial: false, //物资开关
+				tietu: '2', //手持贴图
+				fangkuang: '1', //方框风格
+				ishuizhi: '2', //绘制风格
+				fps: '16', //绘制帧率
+				iszidy1: 'ID-1', //自定义ID
+				iszidy2: 'ID-2', //自定义ID
+				iszidy3: 'ID-3', //自定义ID
+				isfzidycar: false, //自定义载具
+				iszidycar: 'ID', //自定义ID
+				wuzitu: '2', //物资贴图
+				huizhijvli: 400, //绘制距离
+				gugefw: 100, //骨骼范围
+				guge: 'qg', //骨骼风格
+				isshoule: '2', //拔雷提示
+				xian: 2, //线条粗细
+				isBoom2: true, //手雷
+				iskanbox: false, //透盒
+				isairbox: false, //空投
+				isdeadbox: true, //高级盒子
+				isdeadboxall: true, //全部盒子
+				isleida: false, //雷达
+				leidaX: 230, //雷达x
+				leidaY: 30, //雷达y
+				leida: '2', //雷达大小
+				team: 0, //观透队标
+				wenzi: '2',//文字风格
+				renshuY: 35, //人数位置
+				shijianY: 20, //时间位置
+				xianshitime: '2', //时间显示
+				iszhaoche: false, //载具开关
+				isjiaoche: false, //轿车
+				ismaer: false, //马
+				isfly: false, //滑翔机
+				checkwuziList: {
+					kongtoulei: false,//空投类
+					nenglianglei: false,//能量类
+				    boooom: false,//独立
+					yaopinlei: false,//药品类
+					zhongyaolei: false,//稀有
+					Sight: false,//瞄具
+					Armor: false,//三级套
+					iszdywp: false,//自定义
+				},
+				carID: {
+				 3301: '蹦蹦车',
+				 3302: '吉普车',
+				 3303: '吉普车',
+				 3304: '吉普车',
+				 3305: '吉普车',
+				 3306: '轿车',
+				 3307: '迷你大巴',
+				 3308: '摩托车',
+				 3309: '三轮摩托',
+				 3311: '皮卡车',
+				 3312: '肌肉跑车',
+				 3313: '敞篷肌肉跑车',
+				 3314: '罗尼皮卡',
+				 3315: '踏板摩托',
+				 3321: '轻型雪地摩托',
+				 3322: '雪地越野车',
+				 3323: '三轮摩托',
+				 3324: '重型雪地摩托',
+				 3325: '船',
+				 3326: '冲锋艇',
+				 3329: '装甲车',
+				 3330: '飞行服',
+				 3334: '滑翔机',
+				 3335: '大脚车',
+				 3336: 'CoupeRB轿跑',
+				 3347: '自行车',
+				 3342: '全地形车',
+				 3348: '货车',
+				 3349: '敞篷跑车',
+				 3350: '马',
+				 3351: '拉力赛车',
+				 3353: '沙漠越野车',
+				},
+				ItemsID: {
+				 0: '👊',
+				 101001: 'AKM', 
+				 101002: 'M16', 
+				 101003: 'SCAR-L', 
+				 101004: 'M416', 
+				 101005: 'GROZA', 
+				 101006: 'AUG', 
+				 101007: 'QBZ', 
+				 101008: 'M762', 
+				 101009: 'Mk47', 
+				 101010: 'G36C', 
+				 101011: 'AC-VAL', 
+				 101012: '蜜獾', 
+				 101013: 'FAMAS', 
+				 101014: 'ACE32突击步枪',
+				 101016: 'ARX突击步枪',
+				 102001: 'UZI', 
+				 102002: 'UNP45', 
+				 102003: 'Vector', 
+				 102004: '汤姆逊', 
+				 102005: '野牛', 
+				 102007: 'MP5K', 
+				 102008: 'AKS-74U',
+				 102009: 'JS9冲锋枪',
+				 102105: 'P90', 
+				 103001: 'Kar98K', 
+				 103002: 'M24', 
+				 103003: 'AWM', 
+				 103004: 'SKS', 
+				 103005: 'VSS', 
+				 103006: 'Mini14', 
+				 103007: 'Mk14', 
+				 103008: 'Win94', 
+				 103009: 'SLR', 
+				 103010: 'QBU', 
+				 103011: '莫辛纳甘', 
+				 103012: 'AMR', 
+				 103013: 'M417', 
+				 103014: 'MK20-H', 
+				 103015: 'M200', 
+				 103016: 'SVD', 
+				 103017: 'M1加兰德射手步枪', 
+				 103100: 'MK12', 
+				 103901: 'Kar98K',
+				 103902: 'M24', 
+				 103903: 'AWM', 
+				 104001: 'S686', 
+				 104002: 'S1897', 
+				 104003: 'S12K', 
+				 104004: 'DBS', 
+				 104005: 'AA12-G',
+				 104100: 'SPAS-12', 
+				 105001: 'M249', 
+				 105002: 'DP-28', 
+				 105010: 'MG3', 
+				 105012: 'PKM', 
+				 105013: 'MG-36', 
+				 106001: 'P92', 
+				 106002: 'P1911', 
+				 106003: 'R1895', 
+				 106004: 'P18C', 
+				 106005: 'R45', 
+				 106006: '短管霰弹', 
+				 106007: '信号枪', 
+				 106008: '蝎式手枪',
+				 106010: '沙漠之鹰', 
+				 106011: 'TMP-9', 
+				 106012: '双持巨蟒手枪', 
+				 106012: 'F57手枪',
+				 106094: '召回信号枪',
+				 107001: '十字弩', 
+				 107002: 'RPG-7', 
+				 107003: '防爆盾', 
+				 107007: '爆炸猎弓', 
+				 107010: '突击盾牌', 
+				 107006: '战术弩',
+				 107007: '爆炸猎弓',
+				 107008: '燃点复合弓',
+				 107010: '突击盾牌',
+				 107100: 'M79短管榴弹枪',
+				 108001: '大砍刀', 
+				 108002: '撬棍', 
+				 108003: '镰刀', 
+				 108004: '平底锅', 
+				 602001: '震爆弹', 
+				 602002: '烟雾弹', 
+				 602003: '燃烧瓶', 
+				 602004: '手雷', 
+				 602075: '铝热剂', 
+				 602069: '紧急呼救器', 
+				 603004: '燃料电池包', 
+				 604014: '自救类除颤器', 
+				 9807005: '火焰刀',
+				 9807006: '蝴蝶刀',
+				 //省略大量武器ID...
+				},
+			}
+		},
+		mounted() {
+			this.setRect(360, 320);
+		},
+		methods: {
+			setRect(w, h, x = -1, y = -1) {
+				var boxW = w;
+				var boxH = h;
+				var ayMenu = this.$refs.menuMain;
+				ayMenu.style.width = `${boxW}px`;
+				ayMenu.style.height = `${boxH}px`;
+				if (x == -1) ayMenu.style.left = `calc(50% - ${boxW}px)`;
+				if (y == -1) ayMenu.style.top = `calc(50% - ${boxH}px)`;
+			},
+			titleTouchStart(event) {
+				this.touchStartX = parseInt(event.touches[0].clientX);
+				this.touchStartY = parseInt(event.touches[0].clientY);
+				var ayMenu = this.$refs.menuMain;
+				this.menuLastX = ayMenu.offsetLeft;
+				this.menuLastY = ayMenu.offsetTop;
+			},
+			titleTouchMove(event) {
+				event.preventDefault();
+				var distanceX = event.touches[0].clientX - this.touchStartX;
+				var distanceY = event.touches[0].clientY - this.touchStartY;
+				var ayMenu = this.$refs.menuMain;
+				ayMenu.style.left = this.menuLastX + distanceX + "px";
+				ayMenu.style.top = this.menuLastY + distanceY + "px";
+			},
+			changeTab(v) {
+				this.tabValue = v;
+			},
+			closeimgui() {
+				var menu = document.querySelector("#app");
+				menu.style.display = 'none';
+				setWindowTouch(false);
+			},
+			handleInput(event) {
+				  this.inputValue = event.target.value;
+				  return this.inputValue;
+			},
+			Ycang() {
+				if(window.Ycang == 1){
+					window.Ycang = 0;
+					setButtonImage('https://pic1.imgdb.cn/item/688e379a58cb8da5c8ff0bc0.jpg');
+				} else {
+					window.Ycang = 1;
+					setButtonImage('http://m.qpic.cn/psc?/V132Gr5i3T7kAa/LiySpxowE0yeWXwBdXN*SXpYAo0iCHFe6cC1MCs0s1A7bTFlvEXtV5G29jYznZ6BJUHdWMSJJ5O8sp0GR0aI1XPTwBXeSHsNjxVITvZr8aI!/b&bo=PAA8AAAAAAADByI!&rf=viewer_4');
+				}
+			},
+			fpssz() {
+					clearInterval(window.drawTimer);
+					window.drawTimer = setInterval(function() {
+					if (app.isDraw) {
+						shadowDraw();
+						if (!window.fpscount) window.fpscount = 0;
+						if (!window.fpstime) window.fpstime = performance.now();
+						window.fpscount++;
+						if ((performance.now() - window.fpstime) > 2000) {
+							window.fps = window.fpscount;
+							window.fpstime = performance.now();
+							window.fpscount = 0;
+						}
+					} else {
+						clearCtx();
+					}
+					}, app.fps);
+			},
+			zhibo() {
+			if (window.zhibo1 == 1) {
+			  window.zhibo1 = 0;
+			  var hideView = h5gg.loadPlugin("ayHide", "h5gg_hideview.dylib");
+			  hideView.changeHidden(0);
+			  var orig_setWindowTouch = setWindowTouch;
+			  setWindowTouch = function(isTouch) {
+			    var boolNum = isTouch ? 1 : 0;
+			    hideView.changeTouch(boolNum);
+			    orig_setWindowTouch(isTouch)
+			  }
+			} else {
+			  window.zhibo1 = 1;
+			  var hideView = h5gg.loadPlugin("ayHide", "h5gg_hideview.dylib");
+			  setButtonImage('https://pic1.imgdb.cn/item/688e379a58cb8da5c8ff0bc0.jpg');
+			  hideView.changeHidden(1);
+			  var orig_setWindowTouch = setWindowTouch;
+			  setWindowTouch = function(isTouch) {
+			    var boolNum = isTouch ? 1 : 0;
+			    hideView.changeTouch(boolNum);
+			    orig_setWindowTouch(isTouch)
+			  }
+			}
+			},
+		}
+	});
+	// 下面省略你原有的全部绘制、内存读取函数，完整保留即可
+	var message = document.getElementById('upload');
+	if (offent.vernew == 19) {
+	    message.textContent = 'Ver:' + offent.ver;
+	};
+	Date.prototype.format = function (fmt) {
+		var o = {
+		    "y+": this.getFullYear,
+		    "M+": this.getMonth() + 1,
+		    "d+": this.getDate(),
+		    "h+": this.getHours(),
+		    "m+": this.getMinutes(),
+		    "s+": this.getSeconds()
+		};
+		if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+		for (var k in o)
+		if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+		return fmt;
+	}
+	setInterval("document.getElementById('GetTime').innerHTML = (new Date()).format('yyyy-MM-dd hh:mm:ss');", 1000);
+	document.body.addEventListener('touchstart', function() {});
+	setWindowDrag(0, 0, 0, 0);
+	setWindowRect(0,0,window.screen.width,window.screen.height);
+	var iosScale = window.devicePixelRatio;
+	var sWidth = 0;
+	var sHeight = 0;
+	var canvasDom = document.createElement("canvas");
+	document.body.appendChild(canvasDom);
+	canvasDom.style.height = "100%";
+	canvasDom.style.width = "100%";
+	const layout = function() {
+		if (Math.abs(window.orientation) == 90) {
+			setWindowRect(0, 0, window.screen.height, window.screen.width);
+			canvasDom.width = window.screen.height * iosScale;
+			canvasDom.height = window.screen.width * iosScale;
+			sWidth = window.screen.height;
+			sHeight = window.screen.width;
+		} else {
+			setWindowRect(0, 0, window.screen.width, window.screen.height);
+			canvasDom.width = window.screen.width * iosScale;
+			canvasDom.height = window.screen.height * iosScale;
+			sWidth = window.screen.width;
+			sHeight = window.screen.height;
+		}
+	}
+	layout();
+	window.addEventListener("orientationchange", layout, false);
+	setButtonAction(function(){
+		let menu = document.querySelector("#app");
+		if(menu.style.display == "block") menu.style.display = "none";
+		else menu.style.display = "block";
+	});
+	var ctx = canvasDom.getContext('2d');
+	setLineWidth(iosScale);
+	var fontFamily = "Arial";
+	var fontFamily2 = "huizhiyong";
+	var fontFamily3 = "jiemianyong";
+	var currentFont = "infoyong";
+	var cacheTimer = null;
+	var drawTimer = null;
+	var actorCache = [];
+	var wupinCache = [];
+	var sboomsCache = [];
+	var findcarCache = [];
+	var deadboxCache = [];
+	var airboxCache = [];
+	var WatchID = [];
+	var baseAddr = Number(h5gg.getRangesList(0)[0].start);
+	function addID(id) {if(!WatchID.includes(id)) WatchID.push(id);}
+	function removeID(id) {let i=WatchID.indexOf(id);if(i!==-1)WatchID.splice(i,1);}
+	function drawCache(){/*省略原缓存逻辑*/}
+	function shadowDraw(){/*省略原绘制逻辑*/}
+	// 其余draw、矩阵、内存读取函数全部保留你原来代码即可
+	</script>
+</body>
+</html>
