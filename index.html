@@ -11,7 +11,6 @@ body {
 	background:#000000;
 	overflow:hidden;
 }
-/* 解锁弹窗 */
 .keyMask{
 	position:fixed;
 	inset:0;
@@ -88,7 +87,6 @@ body {
 	margin:10px 0;
 	display:none;
 }
-/* 主面板 */
 #app{display:none;}
 .ayimgui {
 	position: fixed;
@@ -195,7 +193,6 @@ input[type=radio]{
 </style>
 </head>
 <body>
-<!-- 解锁弹窗 -->
 <div class="keyMask" id="keyMask">
 	<div class="keyBox">
 		<h3>授权验证</h3>
@@ -207,7 +204,6 @@ input[type=radio]{
 	</div>
 </div>
 
-<!-- 主界面 -->
 <div id="app">
 <div class="ayimgui">
 	<div class="aytitle">
@@ -221,15 +217,13 @@ input[type=radio]{
 			<span class="tab-btn" data-id="page3">参数</span>
 			<span class="tab-btn" data-id="page4">设置</span>
 		</div>
-
 		<div class="tab-page" id="page1">
 			<p id="timeText" style="text-align:center;margin-bottom:12px;color:#99aabb;"></p>
-			<p style="text-align:center;color:#d96138;">现为公益空壳脚本</p>
+			<p style="text-align:center;color:#d96138;">支持快手正能量</p>
 			<p style="text-align:center;color:#d96138;">禁止打压我，zako zako</p>
 			<p style="text-align:center;margin-top:10px;color:#8899aa;">QQ群：1095841708</p>
-			<p style="text-align:center;color:#ff5555;margin-top:8px;">Ver:飞机多功能版</p>
+			<p style="text-align:center;color:#ff5555;margin-top:8px;">Ver:飞机请联系@quanyuenb886</p>
 		</div>
-
 		<div class="tab-page" id="page2">
 			<div class="item"><label><input type="checkbox">人物绘制</label></div>
 			<div class="item"><label><input type="checkbox">射线</label></div>
@@ -239,14 +233,12 @@ input[type=radio]{
 			<div class="item"><label><input type="checkbox">物资绘制</label></div>
 			<div class="item"><label><input type="checkbox">载具绘制</label></div>
 		</div>
-
 		<div class="tab-page" id="page3">
 			<div class="item">绘制范围：<span id="rangeVal" style="color:#409EFF;font-weight:600;">400</span></div>
 			<input type="range" min="1" max="500" id="rangeSlider">
 			<div class="item">骨骼范围：<span id="boneVal" style="color:#409EFF;font-weight:600;">100</span></div>
 			<input type="range" min="1" max="500" id="boneSlider">
 		</div>
-
 		<div class="tab-page" id="page4">
 			<div class="item">绘制帧率
 				<label><input type="radio" name="fps">60</label>
@@ -268,8 +260,6 @@ input[type=radio]{
 </div>
 
 <script>
-// 卡密解锁
-const KEY = "LBYBOOL";
 const mask = document.getElementById("keyMask");
 const appBox = document.getElementById("app");
 const input = document.getElementById("pwdInput");
@@ -277,16 +267,21 @@ const btnUnlock = document.getElementById("unlockBtn");
 const err = document.getElementById("errTip");
 const tickIcon = document.getElementById("tickIcon");
 
+// 直接写死密钥字符串，不使用charCode数组，规避中文编码错位bug
+const key1 = "LBYTOOL";
+const key2 = "wzx爱吃季霸";
+
 btnUnlock.onclick = function(){
+	//trim自动过滤前后多余空格
 	let text = input.value.trim();
 	err.textContent = "";
 	tickIcon.style.display = "none";
 	btnUnlock.disabled = true;
 	btnUnlock.innerText = "验证中...";
 
-	//模拟网络等待 1200毫秒
 	setTimeout(()=>{
-		if(text === KEY){
+		let correct = text === key1 || text === key2;
+		if(correct){
 			tickIcon.style.display = "block";
 			btnUnlock.innerText = "验证通过";
 			setTimeout(()=>{
@@ -305,18 +300,14 @@ input.onkeydown = e => {
 	if(e.key === "Enter" && !btnUnlock.disabled) btnUnlock.click();
 };
 
-// 关闭窗口
 document.getElementById("closeBtn").onclick = () => {
 	appBox.style.display = "none";
 };
 
-// 标签切换
 const tabs = document.querySelectorAll(".tab-btn");
 const pages = document.querySelectorAll(".tab-page");
-
 pages[0].classList.add("show");
 tabs[0].classList.add("active");
-
 tabs.forEach(tab => {
 	tab.onclick = function(){
 		tabs.forEach(t => t.classList.remove("active"));
@@ -327,7 +318,6 @@ tabs.forEach(tab => {
 	};
 });
 
-// 滑块数值
 const rangeS = document.getElementById("rangeSlider");
 const rangeV = document.getElementById("rangeVal");
 rangeS.oninput = () => rangeV.textContent = rangeS.value;
@@ -336,7 +326,6 @@ const boneS = document.getElementById("boneSlider");
 const boneV = document.getElementById("boneVal");
 boneS.oninput = () => boneV.textContent = boneS.value;
 
-// 时间
 function setTime(){
 	let d = new Date();
 	document.getElementById("timeText").innerText = d.toLocaleString();
